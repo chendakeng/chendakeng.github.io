@@ -6,7 +6,7 @@ category: dissertation
 date: 2025-06-10
 venue: 'Journal of Chinese Political Science (accepted)'
 # slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
-paperurl: 'http://chendakeng.github.io/files/paper_2025_jcps_intrusivenss.pdf'
+paperurl: 'https://github.com/chendakeng/chendakeng.github.io/blob/master/files/paper_2025_jcps_intrusivenss.pdf'
 # bibtexurl: 'http://academicpages.github.io/files/bibtex1.bib'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
