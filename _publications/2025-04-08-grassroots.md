@@ -3,8 +3,8 @@ title: 'Chen, D., & Zhan, J. V. (2025). From Social Networks to Digital Networks
 collection: publications
 category: dissertation
 # excerpt: ''
-date: 2025-04-08
-venue: 'In Final Preparation for Submission'
+date: 2025-08-10
+venue: 'The China Quarterly (under review)'
 # slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper1.pdf'
 # bibtexurl: 'http://academicpages.github.io/files/bibtex1.bib'
