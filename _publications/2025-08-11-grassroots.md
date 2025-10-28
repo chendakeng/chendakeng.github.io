@@ -1,5 +1,5 @@
 ---
-title: 'Chen, D., & Zhan, J. V. (2025). From Social Networks to Digital Networks: Explaining Surveillance Strategies in China’s Grassroots Control.'
+title: 'Chen, D., & Zhan, J. V. (2025). The Social Foundation of Digital Control: A Comparative Analysis of Grassroots Surveillance in China.'
 collection: publications
 category: dissertation
 # excerpt: ''
