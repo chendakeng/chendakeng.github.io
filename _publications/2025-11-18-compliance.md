@@ -1,10 +1,10 @@
 ---
-title: 'Chen, D., & Zhan, J. V. (2025). Does Digital Surveillance Increase Citizen Compliance? Evidence from China.'
+title: 'Chen, D., & Zhan, J. V. (2025). Does Digital Surveillance Boost Citizen Compliance? Evidence from China'
 collection: publications
 category: dissertation
 # excerpt: ''
 date: 2025-11-18
-venue: ' Political Psychology (under review)'
+venue: ' Political Psychology (Revise and Resubmit)'
 # slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper1.pdf'
 # bibtexurl: 'http://academicpages.github.io/files/bibtex1.bib'
