@@ -61,7 +61,7 @@ title: 'Author, A., & Author, B. (YEAR). Full Paper Title.'
 collection: publications
 category: published        # or: under_review  (must match a key in _config.yml's publication_category)
 date: YYYY-MM-DD
-venue: 'Journal Name'                      # append '(under review)' if category is under_review
+venue: 'Journal Name'                      # for category: under_review, use the venue field to say how far along it is
 paperurl: 'https://chendakeng.github.io/files/paper_slug.pdf'   # omit/comment out if no PDF yet
 bibtexurl: 'https://doi.org/...'                                 # or a files/*.bib path
 citation: 'Author, A., &amp; Author, B. (YEAR). &quot;Full Paper Title.&quot; <i>Journal Name</i>, vol(issue), pages. https://doi.org/...'
@@ -70,7 +70,7 @@ citation: 'Author, A., &amp; Author, B. (YEAR). &quot;Full Paper Title.&quot; <i
 Abstract / summary paragraph goes here as the markdown body.
 ```
 
-`category` must be one of the keys under `publication_category` in `_config.yml` (currently `published`, `under_review`) — the publications page groups papers into headed sections by this field, in the order they're declared in `_config.yml`. To add a new category (e.g. `working_paper`), add it there first.
+`category` must be one of the keys under `publication_category` in `_config.yml`. There are two keys: `published` (heading "Published") and `under_review` (heading **"Working Papers"** — this single section covers both papers genuinely under journal review and papers still in progress; use the `venue` field to distinguish them, e.g. `'Journal Name (under review)'` vs `'Working Paper'`). To add a new top-level category, add a key under `publication_category` in `_config.yml` first.
 
 ### 4. Add a new teaching entry
 Create `_teaching/short-slug.md`:
