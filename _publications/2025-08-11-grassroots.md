@@ -1,10 +1,10 @@
 ---
-title: 'Chen, D., & Zhan, J. V. (2025). The Social Foundation of Digital Control: A Comparative Analysis of Grassroots Surveillance in China.'
+title: 'Chen, D., & Zhan, J. V. (2026). The Social Foundation of Digital Surveillance: A Comparative Analysis of Grassroots Control in China.'
 collection: publications
 category: under_review
 # excerpt: ''
-date: 2025-08-11
-venue: 'The China Quarterly (under review)'
+date: 2026-07-01
+venue: 'Information, Communication & Society (under review)'
 # slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper1.pdf'
 # bibtexurl: 'http://academicpages.github.io/files/bibtex1.bib'

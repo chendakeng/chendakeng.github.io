@@ -14,36 +14,93 @@ Personal academic website for CHEN Dakeng. Built on [academicpages](https://gith
 - **Theme:** academicpages (fork of Minimal Mistakes)
 - **Deployment:** GitHub Pages — pushing to `master` triggers automatic build and deploy. No CI step needed.
 - **Local preview:** `bundle exec jekyll serve` (requires Ruby + Bundler + gems from `Gemfile`)
+- **Markdown engine:** kramdown (Jekyll default), GFM-like but with quirks — see `_pages/markdown.md` (rendered live at `/markdown/`), which is this theme's own syntax reference (mirrors https://academicpages.github.io/markdown/). Check it for tables, footnotes, MathJax, notices, and HTML-tag support before assuming GitHub-flavored syntax works as-is.
 
 ## Key Files and Directories
 
 | Path | Purpose |
 |------|---------|
-| `_config.yml` | Main site config: title, author profile, social links, navigation |
-| `_pages/` | Static pages (about, CV, publications list, teaching, talks) |
+| `_config.yml` | Main site config: title, author sidebar (bio, employer, social/academic links), navigation include, publication categories |
+| `_data/navigation.yml` | Top nav bar links — order and visibility |
+| `_pages/` | Static single pages (about, cv, cv-json, publications, teaching, talks, markdown guide) |
 | `_posts/` | Blog posts — filename: `YYYY-MM-DD-slug.md` |
-| `_publications/` | One `.md` per paper — linked from publications page |
+| `_publications/` | One `.md` per paper — rendered on `/publications/` and (if a page pulls the collection) `/cv/` |
 | `_talks/` | One `.md` per talk |
 | `_teaching/` | One `.md` per teaching entry |
 | `_portfolio/` | Portfolio items |
-| `_data/` | YAML data files (navigation, author bio, UI text) |
-| `_includes/` | Reusable HTML partials |
+| `_includes/` | Reusable HTML partials (e.g. `archive-single.html`, `archive-single-cv.html`) |
 | `_layouts/` | Page layout templates |
 | `_sass/` | Sass stylesheets |
-| `assets/` | Static assets (CSS, JS, images) |
-| `images/` | Site images including `profile.png` |
-| `files/` | Downloadable files (CV PDF, etc.) |
+| `assets/cv.pdf` | **The** downloadable CV PDF — linked directly from `_pages/about.md`. This is the file to replace when the CV is updated. |
+| `files/` | Per-paper assets: PDFs, slide decks, `.bib` files — referenced by individual `_publications/*.md` entries (`paperurl`, `slidesurl`, `bibtexurl`), NOT the CV. |
+| `images/` | Site images including `images/profile.png` |
 
-## Content Conventions
+**Do not confuse `assets/cv.pdf` with `files/`.** The CV download lives in `assets/`; `files/` is only for individual publication PDFs/slides/bibtex.
 
-### Publications (`_publications/`)
-Filename: `YYYY-MM-DD-short-slug.md`. Front matter fields: `title`, `collection: publications`, `permalink`, `excerpt`, `date`, `venue`, `paperurl`, `citation`.
+## Current Navigation State (important — read before adding pages)
 
-### Blog posts (`_posts/`)
-Filename: `YYYY-MM-DD-slug.md`. Front matter: `title`, `date`, `permalink`, `tags`, `category` (optional).
+`_data/navigation.yml` currently only shows **Research** (`/publications/`) and **Teaching** (`/teaching/`) in the top nav. Talks, Portfolio, Blog, and both CV pages (`/cv/` markdown version and `/cv-json/` JSON version) are commented out and **not linked from anywhere on the live site**. The About page's "Curriculum Vitae" link points straight to `assets/cv.pdf`, bypassing `/cv/` entirely.
 
-### Pages (`_pages/`)
-Front matter: `permalink`, `title`, `layout` (usually `archive` or `single`), `author_profile: true`.
+- `_pages/cv.md` still contains unedited academicpages placeholder text (fake "GitHub University" entries, joke starter content) as of the last check. Treat it as unmaintained scaffolding, not a live page, unless a session is explicitly asked to bring it in sync with the real CV.
+- If asked to "add the CV to the nav" or "fix the CV page," that means editing `_pages/cv.md` content AND uncommenting the relevant line in `_data/navigation.yml`.
+
+## How to Update Common Content
+
+### 1. Update the About page bio (`_pages/about.md`)
+Single markdown file, no collection involved. Just edit the prose directly. Keep name/title header (`# CHEN Dakeng, Devin | 陈达铿`) and the CV download link (`[Curriculum Vitae](../assets/cv.pdf)`) intact.
+
+### 2. Replace the downloadable CV
+Overwrite `assets/cv.pdf` with the new file (e.g. `cp /path/to/new_cv.pdf assets/cv.pdf`). No front matter or code changes needed — the About page link is static and always points to this path.
+
+### 3. Add a new publication
+Create `_publications/YYYY-MM-DD-short-slug.md` (filename date is just a sort-friendly identifier; the *displayed* date comes from the `date:` front-matter field, they don't need to match). Front matter fields, following the existing entries as the template:
+
+```yaml
+---
+title: 'Author, A., & Author, B. (YEAR). Full Paper Title.'
+collection: publications
+category: published        # or: under_review  (must match a key in _config.yml's publication_category)
+date: YYYY-MM-DD
+venue: 'Journal Name'                      # append '(under review)' if category is under_review
+paperurl: 'https://chendakeng.github.io/files/paper_slug.pdf'   # omit/comment out if no PDF yet
+bibtexurl: 'https://doi.org/...'                                 # or a files/*.bib path
+citation: 'Author, A., &amp; Author, B. (YEAR). &quot;Full Paper Title.&quot; <i>Journal Name</i>, vol(issue), pages. https://doi.org/...'
+---
+
+Abstract / summary paragraph goes here as the markdown body.
+```
+
+`category` must be one of the keys under `publication_category` in `_config.yml` (currently `published`, `under_review`) — the publications page groups papers into headed sections by this field, in the order they're declared in `_config.yml`. To add a new category (e.g. `working_paper`), add it there first.
+
+### 4. Add a new teaching entry
+Create `_teaching/short-slug.md`:
+
+```yaml
+---
+title: "YYYY-YYYY: COURSECODE Course Title"
+collection: teaching
+type: "Undergraduate Course"   # or "Postgraduate Course", "Teaching Assistant", etc.
+venue: "Institution, Department"
+date: YYYY-MM-DD
+---
+
+Course description paragraph.
+```
+
+### 5. Add a new talk
+Create `_talks/YYYY-MM-DD-slug.md` (see `_talks/*.md` for the template): needs `title`, `collection: talks`, `type`, `permalink: /talks/YYYY-MM-DD-slug`, `venue`, `date`, `location`. Talks are currently **not** linked in nav — uncomment the "Talks" line in `_data/navigation.yml` to expose `/talks/`.
+
+### 6. Edit the top navigation
+Edit `_data/navigation.yml`. Order in the file = order on the site. Uncomment a `- title / url` pair to add it back; comment out (`#`) to hide without deleting.
+
+### 7. Edit sidebar author info (name, employer, bio blurb, social/academic links)
+Edit the `author:` block in `_config.yml`. Fields like `googlescholar`, `orcid`, `researchgate`, `email`, `employer`, `location` populate the left sidebar automatically via `_includes/author-profile.html`. Leave a field blank/commented to hide that icon.
+
+### 8. Keep cross-references in sync
+When a paper's status changes (e.g. moves from working paper → under review → published), update **all** of these together, since they're not derived from one source of truth:
+- The relevant `_publications/*.md` file (`category`, `venue`, `date`, and `paperurl`/`bibtexurl` once available)
+- `_pages/about.md`'s narrative paragraph, if it name-checks the paper's venue or status
+- The CV PDF in `assets/cv.pdf`, if regenerating from an external CV document
 
 ## Workflow: Updating the Site
 
