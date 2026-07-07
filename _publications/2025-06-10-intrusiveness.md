@@ -3,7 +3,7 @@ title: 'Chen, D., & Zhan, J. V. (2025). When Does Surveillance Trigger Resistanc
 collection: publications
 category: dissertation
 # excerpt: ''
-date: 2025-06-10
+date: 2025-05-13
 venue: 'Journal of Chinese Political Science'
 # slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
 paperurl: 'https://chendakeng.github.io/files/paper_2025_jcps_intrusivenss.pdf'
