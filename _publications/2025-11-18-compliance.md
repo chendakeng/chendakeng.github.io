@@ -1,7 +1,7 @@
 ---
 title: 'Chen, D., & Zhan, J. V. (2026). Does Digital Surveillance Boost Citizen Compliance? Evidence from China'
 collection: publications
-category: dissertation
+category: published
 # excerpt: ''
 date: 2026-06-22
 venue: 'Political Psychology'

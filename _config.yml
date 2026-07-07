@@ -77,20 +77,10 @@ author:
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
-  book:
-    title: 'Books'
-  section:
-    title: 'Book Sections'
-  journal:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
-  dissertation:
-    title: 'Dissertation Project'
-  current:
-    title: 'Current Project'
-  cooperate:
-    title: 'Cooperative Papers'
+  published:
+    title: 'Published'
+  under_review:
+    title: 'Under Review'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"

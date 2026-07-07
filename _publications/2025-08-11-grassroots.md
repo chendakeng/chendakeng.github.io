@@ -1,7 +1,7 @@
 ---
 title: 'Chen, D., & Zhan, J. V. (2025). The Social Foundation of Digital Control: A Comparative Analysis of Grassroots Surveillance in China.'
 collection: publications
-category: dissertation
+category: under_review
 # excerpt: ''
 date: 2025-08-11
 venue: 'The China Quarterly (under review)'

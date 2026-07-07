@@ -1,7 +1,7 @@
 ---
 title: 'Chen, D., & Zhan, J. V. (2025). When Does Surveillance Trigger Resistance? Public Response to Escalating Digital Control in China.'
 collection: publications
-category: dissertation
+category: published
 # excerpt: ''
 date: 2025-05-13
 venue: 'Journal of Chinese Political Science'
