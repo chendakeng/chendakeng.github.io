@@ -83,6 +83,10 @@ publication_category:
     title: 'Working Papers'
 
 # Site Settings
+# GitHub Pages force-enables jekyll-titles-from-headings, which would infer a
+# page title from the homepage's first h1 and render it twice. Keep disabled.
+titles_from_headings:
+  enabled              : false
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160

@@ -50,7 +50,7 @@ This is the single file that turns stock academicpages into the custom design. I
 Rules of thumb:
 - Never edit vendor or stock theme partials for styling; add overrides to `_sass/layout/_custom.scss` instead, in the matching section.
 - Colors always via the `--global-*` CSS variables so light/dark stay in sync; when adding a color, define it in **both** theme files (`_sass/theme/_default.scss` and `_sass/theme/_dark.scss`).
-- The homepage (`_pages/about.md`) intentionally has no `title:` in front matter — this suppresses the redundant "About" `page__title` heading; the visible h1 is the markdown name header. Don't re-add a title (browser tab falls back to `site.title` automatically).
+- The homepage (`_pages/about.md`) intentionally has no `title:` in front matter — this suppresses the redundant "About" `page__title` heading; the visible h1 is the markdown name header. Don't re-add a title (browser tab falls back to `site.title` automatically). This only works because `titles_from_headings: enabled: false` is set in `_config.yml`: GitHub Pages force-enables the `jekyll-titles-from-headings` plugin (local builds don't), which would otherwise infer a title from the first h1 and render the name twice **only in production**. Don't remove that setting.
 - Pill-button styling on publication action links comes free from `archive-single.html`'s existing markup; don't add manual `|` separators between links there (they were deliberately removed).
 - Fonts load from Google Fonts CDN (`_includes/head.html`). If mainland-China accessibility becomes a concern, self-host the WOFF2 files under `assets/fonts/` and swap the `<link>` tags for `@font-face` rules in `_custom.scss`.
 
