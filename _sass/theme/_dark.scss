@@ -33,22 +33,23 @@ $navicon-height             : 4px;
 $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
-/* Dark theme for the site */
+/* Dark theme for the site: warm ink, parchment text, ember accent */
 html[data-theme="dark"] {
-    --global-base-color                 : #{$background};
-    --global-bg-color                   : #{$background};
-    --global-footer-bg-color            : #{$background};
-    --global-border-color               : #{$light-gray};
-    --global-dark-border-color          : #{$background-light};
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : #{$dark-gray};
-    --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
-    --global-link-color-visited         : #{$link-light};
-    --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$background-light};
-    --global-text-color                 : #{$text};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$background-lighter};
+    --global-base-color                 : #a39a87;
+    --global-bg-color                   : #1b1712;
+    --global-footer-bg-color            : #1b1712;
+    --global-border-color               : #373126;
+    --global-dark-border-color          : #4a4232;
+    --global-code-background-color      : #26211a;
+    --global-code-text-color            : #d9d1c0;
+    --global-fig-caption-color          : #a39a87;
+    --global-link-color                 : #de8a6b;
+    --global-link-color-hover           : #eca98f;
+    --global-link-color-visited         : #c08d77;
+    --global-masthead-link-color        : #ede7d9;
+    --global-masthead-link-color-hover  : #de8a6b;
+    --global-text-color                 : #eae4d6;
+    --global-text-color-light           : #a39a87;
+    --global-thead-color                : #2c261e;
+    --global-accent-soft                : rgba(222, 138, 107, 0.22);
 }

@@ -26,22 +26,23 @@ $navicon-height             : 4px;
 $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
-/* Default light theme for the site */
+/* Default light theme for the site: warm paper, ink text, cinnabar accent */
 :root {
-    --global-base-color                 : #{$gray};
-    --global-bg-color                   : #fff;
-    --global-footer-bg-color            : #f2f3f3;
-    --global-border-color               : #{$lighter-gray};
-    --global-dark-border-color          : #bdc1c4;
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : mix(#fff,  #{$dark-gray}, 25%);
-    --global-link-color                 : #52adc8;
-    --global-link-color-hover           : mix(#000, #2f7f93, 25%);
-    --global-link-color-visited         : mix(#fff, #2f7f93, 25%);  
-    --global-masthead-link-color        : #{$dark-gray};
-    --global-masthead-link-color-hover  : mix(#000, #{$gray}, 25%);    
-    --global-text-color                 : #{$dark-gray};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$lighter-gray};
+    --global-base-color                 : #8a8171;
+    --global-bg-color                   : #fbf9f4;
+    --global-footer-bg-color            : #fbf9f4;
+    --global-border-color               : #e9e2d3;
+    --global-dark-border-color          : #d8ceba;
+    --global-code-background-color      : #f4efe4;
+    --global-code-text-color            : #4c4536;
+    --global-fig-caption-color          : #77705f;
+    --global-link-color                 : #a03a28;
+    --global-link-color-hover           : #7c2b1d;
+    --global-link-color-visited         : #8c5347;
+    --global-masthead-link-color        : #2a2620;
+    --global-masthead-link-color-hover  : #a03a28;
+    --global-text-color                 : #2a2620;
+    --global-text-color-light           : #77705f;
+    --global-thead-color                : #efe9db;
+    --global-accent-soft                : rgba(160, 58, 40, 0.14);
 }

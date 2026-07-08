@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "Hong Kong"
 site_theme               : "default"
-title                    : "Personal Site"
+title                    : "CHEN Dakeng"
 title_separator          : "-"
 name                     : &name "CHEN Dakeng"
-description              : &description "personal description"
+description              : &description "Personal academic website of CHEN Dakeng (Devin): computational social science, comparative politics, and digital governance in China."
 url                      : https://chendakeng.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : # "academicpages/academicpages.github.io"
@@ -23,9 +23,9 @@ repository               : # "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "CHEN Dakeng<br><br>"
-  pronouns         : # example: "she/her"  
-  bio              : # "Short biography for the left-hand sidebar"
+  name             : "CHEN Dakeng"
+  pronouns         : # example: "she/her"
+  bio              : "Comparative politics · digital governance · computational social science"
   location         : "Hong Kong"
   employer         : "CUHK"
   uri              : # URL

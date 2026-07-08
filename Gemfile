@@ -9,4 +9,11 @@ group :jekyll_plugins do
   gem 'webrick', '~> 1.8'
 end
 
-gem 'github-pages'
+gem 'github-pages', '~> 232'
+
+# Standard-library gems removed from Ruby >= 3.4 default gems,
+# still required by the jekyll version pinned by github-pages
+gem 'csv'
+gem 'base64'
+gem 'bigdecimal'
+gem 'logger'

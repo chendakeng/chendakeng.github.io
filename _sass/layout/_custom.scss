@@ -1,0 +1,235 @@
+/* ==========================================================================
+   CUSTOM DESIGN OVERRIDES — "Ink & Cinnabar"
+   Imported last in assets/css/main.scss so these rules win over the
+   stock academicpages partials. All colors come from the CSS variables
+   defined in _sass/theme/_default.scss and _sass/theme/_dark.scss.
+   ========================================================================== */
+
+/*
+   Global type
+   ========================================================================== */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font-family;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+::selection {
+  background: var(--global-accent-soft);
+}
+
+/*
+   Masthead and navigation
+   ========================================================================== */
+
+.masthead__inner-wrap {
+  padding: 0.9em 1em;
+}
+
+/* Site brand */
+.masthead__menu-item--lg a {
+  font-family: $header-font-family;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* Nav links as quiet letter-spaced caps */
+.masthead__menu-item:not(.masthead__menu-item--lg) a {
+  font-family: $global-font-family;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/*
+   Page titles — short cinnabar rule as the site's signature mark
+   ========================================================================== */
+
+#main .page__title,
+.page__content > h1:first-child {
+  position: relative;
+  padding-bottom: 0.4em;
+  margin-bottom: 0.6em;
+  line-height: 1.25;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2.4rem;
+    height: 3px;
+    background: var(--global-link-color);
+  }
+}
+
+/*
+   Author sidebar
+   ========================================================================== */
+
+.author__avatar img {
+  max-width: 160px;
+  border-radius: 26%;
+
+  @include breakpoint($large) {
+    padding: 0;
+    border: none;
+  }
+}
+
+.sidebar .author__name {
+  font-family: $header-font-family;
+  font-size: $type-size-4;
+  font-weight: 600;
+
+  @include breakpoint($large) {
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+}
+
+.author__bio {
+  font-style: italic;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+.author__urls {
+  font-size: 0.85em;
+
+  li {
+    color: var(--global-text-color-light);
+  }
+
+  a {
+    color: var(--global-text-color-light);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-link-color);
+      text-decoration: none;
+    }
+  }
+}
+
+/*
+   Archive lists (publications, teaching)
+   ========================================================================== */
+
+.archive a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Category headings as letter-spaced caps */
+.archive__subtitle {
+  font-family: $global-font-family;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--global-text-color-light);
+  padding-bottom: 0.6em;
+  margin: 2.4em 0 0.2em;
+}
+
+.list__item .archive__item {
+  padding: 1.1em 0 1.2em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.archive__item-title {
+  font-family: $header-font-family;
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.4;
+
+  a {
+    color: var(--global-text-color);
+  }
+
+  a:hover {
+    color: var(--global-link-color);
+    text-decoration: none;
+  }
+}
+
+.archive__item:hover .archive__item-title {
+  text-decoration: none;
+}
+
+/* Venue, year, and citation lines */
+.archive__item > p {
+  font-size: 0.85em;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.5em;
+}
+
+.archive__item-excerpt {
+  color: var(--global-text-color);
+}
+
+/* Action links (paper, slides, publisher) as quiet pills */
+.archive__item p > a {
+  display: inline-block;
+  padding: 0.05em 0.7em;
+  margin: 0.3em 0.15em 0 0;
+  border: 1px solid var(--global-dark-border-color);
+  border-radius: 999px;
+  color: var(--global-text-color-light);
+
+  &:hover {
+    color: var(--global-link-color);
+    border-color: var(--global-link-color);
+    text-decoration: none;
+  }
+}
+
+/*
+   Footer
+   ========================================================================== */
+
+.page__footer {
+  background-color: transparent;
+  border-top: 1px solid var(--global-border-color);
+  margin-top: 4em;
+
+  footer {
+    margin-top: 0;
+    padding: 1.8em 1em;
+    text-align: center;
+  }
+}
+
+.page__footer-copyright {
+  font-family: $global-font-family;
+  font-size: 0.78em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+}

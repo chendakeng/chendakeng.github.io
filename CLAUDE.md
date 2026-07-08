@@ -13,8 +13,46 @@ Personal academic website for CHEN Dakeng. Built on [academicpages](https://gith
 - **Static site generator:** Jekyll (Ruby)
 - **Theme:** academicpages (fork of Minimal Mistakes)
 - **Deployment:** GitHub Pages — pushing to `master` triggers automatic build and deploy. No CI step needed.
-- **Local preview:** `bundle exec jekyll serve` (requires Ruby + Bundler + gems from `Gemfile`)
+- **Local preview:** requires Homebrew Ruby 3.3 (system Ruby is too old; Ruby 4.x is too new for the `github-pages` gem). Run:
+
+  ```bash
+  export PATH="/opt/homebrew/opt/ruby@3.3/bin:/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
+  bundle exec jekyll serve --port 4000
+  ```
+
+  **Gotcha:** always preview via `jekyll serve`, not `jekyll build` + opening `_site/` pages. A bare `jekyll build` resolves asset URLs to the production domain (`https://chendakeng.github.io/...`), so locally opened pages silently load the *deployed* CSS instead of your local changes. `jekyll serve` rewrites URLs to `localhost:4000`.
 - **Markdown engine:** kramdown (Jekyll default), GFM-like but with quirks — see `_pages/markdown.md` (rendered live at `/markdown/`), which is this theme's own syntax reference (mirrors https://academicpages.github.io/markdown/). Check it for tables, footnotes, MathJax, notices, and HTML-tag support before assuming GitHub-flavored syntax works as-is.
+
+## Design System ("Ink & Cinnabar")
+
+The site was restyled in July 2026 away from the stock academicpages look. The design language: warm paper background, near-black ink text, a single cinnabar-red accent (seal-stamp red), Fraunces display serif for headings and the brand, Source Serif 4 for body text. Keep new elements consistent with this.
+
+| Piece | Where it lives |
+|-------|----------------|
+| Web fonts (Fraunces + Source Serif 4, Google Fonts) | `_includes/head.html` |
+| Font family variables (`$display`, `$serif`) | `_sass/_themes.scss` |
+| Light palette (CSS variables incl. `--global-accent-soft`) | `_sass/theme/_default.scss` |
+| Dark palette | `_sass/theme/_dark.scss` |
+| All component overrides (masthead, sidebar, publication list, pill links, footer) | `_sass/layout/_custom.scss` — imported **last** in `assets/css/main.scss` |
+| Minimal footer (`© YEAR CHEN Dakeng`) | `_includes/footer.html` (year auto-updates from `site.time` at build) |
+
+### What `_sass/layout/_custom.scss` does (section by section)
+
+This is the single file that turns stock academicpages into the custom design. It is imported **last** in `assets/css/main.scss`, so its rules win over every stock partial without editing them. Sections, in file order:
+
+1. **Global type** — antialiasing, body `line-height: 1.7`, all headings switched to `$header-font-family` (Fraunces) at weight 600 with slight negative letter-spacing, underlines offset 3px/1px thick, text selection tinted with `--global-accent-soft`.
+2. **Masthead and navigation** — roomier padding; the brand link set in Fraunces 1.3em bold; all other nav items rendered as small (0.8em) uppercase serif with 0.14em letter-spacing.
+3. **Page titles** — `#main .page__title` and the homepage's first `h1` get a `::after` pseudo-element: a 2.4rem × 3px cinnabar rule (colored by `--global-link-color`). This is the site's signature mark.
+4. **Author sidebar** — avatar becomes a soft square (`border-radius: 26%`, stock circle/border removed); name in Fraunces `$type-size-4`; bio line italic, small, muted; social/academic links de-emphasized to `--global-text-color-light`, turning cinnabar on hover, no underline.
+5. **Archive lists** (publications, teaching) — kills the theme's underline-everything behavior (underline on hover only); category subtitles as small uppercase letter-spaced labels; each `.list__item` separated by a hairline bottom border; item titles in Fraunces 1.15em, ink-colored, cinnabar on hover; venue/citation `<p>` lines shrunk to 0.85em muted; **action links** (`Download Paper`, `View at Publisher`, `Download Slides`) styled as bordered pill buttons via `.archive__item p > a`, border and text turning cinnabar on hover.
+6. **Footer** — transparent background with a hairline top border; single centered line in small uppercase letter-spaced type.
+
+Rules of thumb:
+- Never edit vendor or stock theme partials for styling; add overrides to `_sass/layout/_custom.scss` instead, in the matching section.
+- Colors always via the `--global-*` CSS variables so light/dark stay in sync; when adding a color, define it in **both** theme files (`_sass/theme/_default.scss` and `_sass/theme/_dark.scss`).
+- The homepage (`_pages/about.md`) intentionally has no `title:` in front matter — this suppresses the redundant "About" `page__title` heading; the visible h1 is the markdown name header. Don't re-add a title (browser tab falls back to `site.title` automatically).
+- Pill-button styling on publication action links comes free from `archive-single.html`'s existing markup; don't add manual `|` separators between links there (they were deliberately removed).
+- Fonts load from Google Fonts CDN (`_includes/head.html`). If mainland-China accessibility becomes a concern, self-host the WOFF2 files under `assets/fonts/` and swap the `<link>` tags for `@font-face` rules in `_custom.scss`.
 
 ## Key Files and Directories
 
@@ -110,7 +148,16 @@ They are inert by design: every file in a `sample_xxx/` folder has `published: f
 ## Workflow: Updating the Site
 
 1. Edit content files locally.
-2. Preview with `bundle exec jekyll serve` at `http://localhost:4000`.
+   - **Content-only change** (new publication, bio edit, CV replacement): follow §"How to Update Common Content"; no styling work needed.
+   - **Styling change**: touch only `_sass/layout/_custom.scss` and, for colors, both `_sass/theme/*.scss` files. See §"Design System".
+2. Preview at `http://localhost:4000` (Homebrew Ruby 3.3 required — see Tech Stack for the exact commands and the `jekyll serve` vs `jekyll build` URL gotcha):
+
+   ```bash
+   export PATH="/opt/homebrew/opt/ruby@3.3/bin:/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
+   bundle exec jekyll serve --port 4000
+   ```
+
+   Check both color modes (sun/moon toggle in the masthead) — every color change must look right in light *and* dark.
 3. Commit changes.
 4. Push to `master` — GitHub Pages deploys automatically (takes ~1 min).
 
