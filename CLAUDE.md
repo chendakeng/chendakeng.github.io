@@ -29,7 +29,7 @@ The site was restyled in July 2026 away from the stock academicpages look. The d
 
 | Piece | Where it lives |
 |-------|----------------|
-| Web fonts (Fraunces + Source Serif 4, Google Fonts) | `_includes/head.html` |
+| Web fonts (Fraunces + Source Serif 4, self-hosted WOFF2) | `assets/fonts/`, `@font-face` rules in `_sass/layout/_custom.scss` |
 | Font family variables (`$display`, `$serif`) | `_sass/_themes.scss` |
 | Light palette (CSS variables incl. `--global-accent-soft`) | `_sass/theme/_default.scss` |
 | Dark palette | `_sass/theme/_dark.scss` |
@@ -52,7 +52,7 @@ Rules of thumb:
 - Colors always via the `--global-*` CSS variables so light/dark stay in sync; when adding a color, define it in **both** theme files (`_sass/theme/_default.scss` and `_sass/theme/_dark.scss`).
 - The homepage (`_pages/about.md`) intentionally has no `title:` in front matter — this suppresses the redundant "About" `page__title` heading; the visible h1 is the markdown name header. Don't re-add a title (browser tab falls back to `site.title` automatically). This only works because `titles_from_headings: enabled: false` is set in `_config.yml`: GitHub Pages force-enables the `jekyll-titles-from-headings` plugin (local builds don't), which would otherwise infer a title from the first h1 and render the name twice **only in production**. Don't remove that setting.
 - Pill-button styling on publication action links comes free from `archive-single.html`'s existing markup; don't add manual `|` separators between links there (they were deliberately removed).
-- Fonts load from Google Fonts CDN (`_includes/head.html`). If mainland-China accessibility becomes a concern, self-host the WOFF2 files under `assets/fonts/` and swap the `<link>` tags for `@font-face` rules in `_custom.scss`.
+- Fonts are self-hosted (WOFF2 files under `assets/fonts/`, `@font-face` rules at the top of `_custom.scss`) rather than loaded from Google Fonts CDN, so the site still renders in its intended typography in regions where Google domains are blocked (e.g. mainland China without a VPN). If updating font weights/styles, re-fetch the relevant `latin`-subset WOFF2 from `fonts.googleapis.com/css2?family=...` and replace the file in `assets/fonts/` rather than reverting to the CDN link.
 
 ## Key Files and Directories
 
